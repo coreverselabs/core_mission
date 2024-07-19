@@ -1,0 +1,60 @@
+{
+    "name": "core_mission_demo",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "dependencies": {
+        "@guildxyz/sdk": "^2.5.0",
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^27.5.2",
+        "@types/node": "^16.18.96",
+        "@types/react": "^18.3.1",
+        "@types/react-dom": "^18.3.0",
+        "axios": "^1.6.8",
+        "bech32-converting": "^1.0.9",
+        "buffer": "^6.0.3",
+        "crypto-js": "^4.2.0",
+        "discord.js": "^14.15.3",
+        "freecaptcha": "^1.3.0",
+        "leaflet": "^1.9.3",
+        "octokit": "^4.0.2",
+        "path-browserify": "^1.0.1",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-query": "^3.39.3",
+        "react-scripts": "5.0.1",
+        "typescript": "^4.9.5",
+        "web-vitals": "^2.1.4"
+    },
+    "devDependencies": {
+        "html-loader": "^4.1.0",
+        "html-webpack-plugin": "^5.5.0",
+        "process": "^0.11.10",
+        "webpack-dev-server": "^4.10.1"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
