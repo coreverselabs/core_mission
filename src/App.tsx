@@ -23,8 +23,18 @@ function App() {
   const [lastGen, setLastGen] = useState('');
   const [accessVal, setAccessVal] = useState('');
   const [codeVal, setCodeVal] = useState('');
+  const [xAVal, setXAVal] = useState(0);
+  const [yAVal, setYAVal] = useState(0);
+  const [tAVal, setTAVal] = useState(0);
+  const [xBVal, setXBVal] = useState(0);
+  const [yBVal, setYBVal] = useState(0);
+  const [tBVal, setTBVal] = useState(0);
+  const [tMidAppVal, setTMidAppVal] = useState(0);
+  //centroid = (380, 714)
+  const [tMidVal, setTMidVal] = useState(0);
 
   useEffect(() => {
+
     async function checkDiscord() {
       var url = window.location.toString();
       var queryString = "";
@@ -99,9 +109,10 @@ function App() {
 
     checkDiscord();
     checkGithub();
+
+
+
   }, [])
-
-
 
 
 
@@ -142,6 +153,65 @@ function App() {
     catch (err){
       console.log(err);
       return 0;
+    }
+  }
+
+  const MouseAuthStart = async (ev: React.MouseEvent<Element>) => {
+    if (xAVal != 0){
+      console.log("You have already clicked A!");
+      return;
+    }
+    const x = ev.pageX;
+    const y = ev.pageY;
+    console.log(x.toString().concat(" ").concat(y.toString()));
+    const t = performance.now();
+    console.log(t);
+    setXAVal(x);
+    setYAVal(y);
+    setTAVal(t);
+  }
+
+  const MouseAuthEnd = async (ev: React.MouseEvent<Element>) => {
+    if (xAVal == 0){
+      console.log("A button must be clicked first");
+      return;
+    }
+    if (xBVal != 0){
+      console.log("You have already clicked B!");
+      return;
+    }
+    const x = ev.pageX;
+    const y = ev.pageY;
+    console.log(x.toString().concat(" ").concat(y.toString()));
+    const t = performance.now();
+    console.log(t);
+    setXBVal(x);
+    setYBVal(y);
+    setTBVal(t);
+    const tmid = (tAVal + t)/2;
+    setTMidVal(tmid);
+    console.log(tmid);
+    console.log(tMidAppVal);
+  }
+
+  const MouseInbetween = async (e: React.MouseEvent<Element>) => {
+    if (tMidAppVal != 0){
+        console.log('a');
+      return;
+    }
+    if (xAVal == 0){
+      console.log('b');
+      return;
+    }
+    console.log('c');
+    const tma = performance.now();
+    if (e.pageX >= 350 && e.pageX <= 410){
+      setTMidAppVal(tma);
+      return;
+    }
+    if (e.pageY >= 684 && e.pageY <= 744){
+      setTMidAppVal(tma);
+      return;
     }
   }
 
@@ -270,7 +340,7 @@ function App() {
     <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          
+          <br/><br/>
           <a
             className="App-link"
             href="https://coreverse.medium.com"
@@ -289,6 +359,10 @@ function App() {
           <a>--------------------------------------------</a>
           <a id="mv" onClick={MouseAuth} style={{"cursor":'pointer'}}> Mouse Based Verification </a>
           <div id="mouse_area"></div>
+          <a>--------------------------------------------</a>
+          <a  onClick={MouseAuthStart} style={{"cursor":'pointer'}}> Mouse Based Verification Start </a>
+          <div id="ibtwn" onMouseOver={(e)=>{MouseInbetween(e)}}>-------------------------------------------- </div>
+           <a  onClick={MouseAuthEnd} style={{"cursor":'pointer'}}> Mouse Based Verification End </a>
           <a>--------------------------------------------</a>
           <a onClick={GenerateCaptcha} style={{"cursor":'pointer'}}> Captcha Based Verification </a>
           <div id="cap_area">
