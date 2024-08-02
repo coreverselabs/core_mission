@@ -131,9 +131,25 @@ function App() {
 
 
   const MouseAuth = async () => {
+    if (xAVal == 0 || xBVal == 0){
+      console.log('A or B buttons not clicked yet');
+      return;
+    }
+    const d = {
+      x1: xAVal,
+      y1: yAVal,
+      t1: tAVal,
+      x2: xBVal,
+      y2: yBVal,
+      t2: tBVal,
+      tmid: tMidVal,
+      tmidapp: tMidAppVal,
+      xmid: 380,
+      ymid: 714,
+    }
     try{
       const response = await axios.post("https://gm-serve3.onrender.com/api/secret/mouse", {
-        data: null,
+        data: d,
     });
     console.log(response.data.mouseHuman);
     if (response.data.mouseHuman){
@@ -204,15 +220,22 @@ function App() {
       return;
     }
     console.log('c');
+    const xmid = e.clientX;
+    const ymid = e.clientY;
+    console.log('xmid: '.concat(xmid.toString()).concat(' ymid: ').concat(ymid.toString()));
+    var el = document.getElementById('ibtwn')!;
+    const rect = el.getBoundingClientRect();
+    const xmax = rect.right;
+    const xmin = rect.left;
+    const ymax = rect.bottom;
+    const ymin = rect.top;
+
     const tma = performance.now();
-    if (e.pageX >= 350 && e.pageX <= 410){
+    if ((xmid >= rect.left && xmid <= rect.right) && (ymid >= rect.top && ymid <= rect.bottom)){
       setTMidAppVal(tma);
       return;
     }
-    if (e.pageY >= 684 && e.pageY <= 744){
-      setTMidAppVal(tma);
-      return;
-    }
+
   }
 
   const CaptchaAuth = async () => {
@@ -357,12 +380,12 @@ function App() {
           <a>--------------------------------------------</a>
           <a onClick={()=>Login('cmstn')} style={{"cursor":'pointer'}}> Cosmostation Login </a>
           <a>--------------------------------------------</a>
-          <a id="mv" onClick={MouseAuth} style={{"cursor":'pointer'}}> Mouse Based Verification </a>
-          <div id="mouse_area"></div>
-          <a>--------------------------------------------</a>
           <a  onClick={MouseAuthStart} style={{"cursor":'pointer'}}> Mouse Based Verification Start </a>
           <div id="ibtwn" onMouseOver={(e)=>{MouseInbetween(e)}}>-------------------------------------------- </div>
            <a  onClick={MouseAuthEnd} style={{"cursor":'pointer'}}> Mouse Based Verification End </a>
+          <a>--------------------------------------------</a>
+          <a id="mv" onClick={MouseAuth} style={{"cursor":'pointer'}}> Mouse Based Verification </a>
+          <div id="mouse_area"></div>
           <a>--------------------------------------------</a>
           <a onClick={GenerateCaptcha} style={{"cursor":'pointer'}}> Captcha Based Verification </a>
           <div id="cap_area">
