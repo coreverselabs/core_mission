@@ -135,6 +135,14 @@ function App() {
       console.log('A or B buttons not clicked yet');
       return;
     }
+    var el = document.getElementById('ibtwn')!;
+    const rect = el.getBoundingClientRect();
+    const xmax = rect.right;
+    const xmin = rect.left;
+    const ymax = rect.bottom;
+    const ymin = rect.top;
+    const xp = (xmax + xmin)/2;
+    const yp = (ymax + ymin)/2;
     const d = {
       x1: xAVal,
       y1: yAVal,
@@ -144,8 +152,8 @@ function App() {
       t2: tBVal,
       tmid: tMidVal,
       tmidapp: tMidAppVal,
-      xmid: 380,
-      ymid: 714,
+      xmid: xp,
+      ymid: yp,
     }
     try{
       const response = await axios.post("https://gm-serve3.onrender.com/api/secret/mouse", {
