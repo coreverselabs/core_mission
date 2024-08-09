@@ -383,22 +383,22 @@ function App() {
           <br/>
 
           <a onClick={()=>Login('keplr')} style={{"cursor":'pointer','color':'cyan'}}> Keplr Login </a>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a onClick={()=>Login('leap')} style={{"cursor":'pointer','color':'cyan'}}> Leap Login </a>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a onClick={()=>Login('cmstn')} style={{"cursor":'pointer','color':'cyan'}}> Cosmostation Login </a>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a  onClick={MouseAuthStart} style={{"cursor":'pointer','color':'cyan'}}> Mouse Based Verification Start </a>
-          <div id="ibtwn" onMouseOver={(e)=>{MouseInbetween(e)}}>-------------------------------------------- </div>
+          <div id="ibtwn" onMouseOver={(e)=>{MouseInbetween(e)}} style={{'color':'grey'}}>-------------------------------------------- </div>
            <a  onClick={MouseAuthEnd} style={{"cursor":'pointer','color':'cyan'}}> Mouse Based Verification End </a>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a id="mv" onClick={MouseAuth} style={{"cursor":'pointer','color':'cyan'}}> Mouse Based Verification </a>
           <div id="mouse_area"></div>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a onClick={GenerateCaptcha} style={{"cursor":'pointer','color':'cyan'}}> Captcha Based Verification </a>
           <div id="cap_area">
             <div style={{'color':'cyan'}}>Fill in the Order: <a style={{'color':'white'}}>White</a> - <a style={{'color':'indigo'}}>Blue</a> - <a style={{'color':'red'}}>Red</a></div>
-            <div>Ignore All Other Colors</div>
+            <div style={{'color':'cyan'}}>Ignore All Other Colors</div>
 
 
 
@@ -413,11 +413,11 @@ function App() {
             </form>
           </div>
           <div id="cap_resp" style={{"fontSize": ".6em"}}></div>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a onClick={DiscordAuth} style={{"cursor":'pointer','color':'cyan'}}> Discord Verification </a>
-          <a>--------------------------------------------</a>
+          <a style={{'color':'grey'}}>--------------------------------------------</a>
           <a onClick={GithubAuth} style={{"cursor":'pointer','color':'cyan'}}> GitHub Verification </a>
-        <a>--------------------------------------------</a>
+        <a style={{'color':'grey'}}>--------------------------------------------</a>
         </header>
     </div>
   );
